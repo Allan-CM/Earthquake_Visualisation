@@ -11,13 +11,24 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 d3.json(url).then(function(response) {
+
+  // Declare the features variable
+  let features = response.features;
+  
   // Define a markerSize() function that will give each city a different radius based on its population.
   function markerSize(mag) {
     return Math.sqrt(Math.abs(mag)) * 30000;
   }
 
-  // Declare the features variable
-  let features = response.features;
+  function getColor(d) {
+    return d > 90  ? '#bd0026' :
+           d > 70  ? '#f03b20' :
+           d > 50   ? '#fd8d3c' :
+           d > 30   ? '#feb24c' :
+           d > 10   ? '#fed976' :
+                      '#ffffb2';
+  }
+
 
   // Comment this line in to render all 80,000 markers
   let marker_limit = features.length;
@@ -30,7 +41,7 @@ d3.json(url).then(function(response) {
     L.circle([location[1], location[0]], {
       fillOpacity: 1,
       color: "black",
-      fillColor: "yellow",
+      fillColor: getColor(location[2]),
       radius: markerSize(magnitude_level)
    }).addTo(myMap);
     
