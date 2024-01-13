@@ -43,7 +43,9 @@ d3.json(url).then(function(response) {
       color: "black",
       fillColor: getColor(location[2]),
       radius: markerSize(magnitude_level)
-   }).addTo(myMap);
+   }).bindPopup(`<h1>Earthquake Info</h1> <hr> <h3>Place: ${features[i].properties.place}</h3> <hr> <h3>Magnitude: ${magnitude_level.toLocaleString()}</h3>
+   <hr> <h3>Depth: ${location[2]}</h3>`
+   ).addTo(myMap);
   }
 
 
