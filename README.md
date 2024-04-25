@@ -39,7 +39,7 @@ The map visualizes earthquake data from the past week, displaying locations, mag
 ## Conclusion
 This interactive map serves as a tool for visualizing and understanding earthquake data. Users can easily explore earthquake locations, magnitudes, and depths, gaining insights into seismic activity over the past week.
 
-** Repository Organization: 
+## Repository Organization: 
 1. logic --> contains js code to render map 
 2. style --> css file rendering webpage desining 
 3. index.htm --> contains structure of webapge 
